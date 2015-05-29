@@ -15,7 +15,7 @@ vagrant init
 vagrant up > vagrant_up_output
 
 # Turning the 2 blank VMs into a Mesos Master & Mesos Slave
-https://docs.mesosphere.com/getting-started/datacenter/install/ and follow "RedHat 7 / CentOS 7" instructions
+Check out the [official Mesos tutorial](https://docs.mesosphere.com/getting-started/datacenter/install/) and follow the "RedHat 7 / CentOS 7" instructions
 
 ## 1rst VM -> Mesos Master Node
 SSH into the VM named "mesos_master"
