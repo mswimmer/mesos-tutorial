@@ -70,23 +70,36 @@ $ systemctl stop mesos-slave.service
 $ systemctl disable mesos-slave.service
 rm '/etc/systemd/system/multi-user.target.wants/mesos-slave.service'
 ```
+### Add extra mesos-master command
+$ echo MASTER_MESOS_IP > /etc/mesos_master/ip
 ### Restart Mesos Master & Marathon services
+Restart the Mesos Master service
 ```
 $ systemctl restart  mesos-master.service
-$ systemctl status  mesos-master.service
+```
+Results
+```
+$ ps -aux | grep mesos-master
+root     28630  3.0  0.4 1274092 17736 ?       Ssl  23:46   0:00 /usr/sbin/mesos-master --zk=zk://10.145.6.64:2181/mesos --port=5050 --log_dir=/var/log/mesos --ip=10.145.6.64 --quorum=1 --work_dir=/var/lib/mesos
+
+$ systemctl status mesos-master.service
 mesos-master.service - Mesos Master
    Loaded: loaded (/usr/lib/systemd/system/mesos-master.service; enabled)
-   Active: active (running) since Sat 2015-05-30 19:12:42 PDT; 32s ago
- Main PID: 27879 (mesos-master)
+   Active: active (running) since Sat 2015-05-30 23:46:33 PDT; 7min ago
+ Main PID: 28630 (mesos-master)
    CGroup: /system.slice/mesos-master.service
-           ├─27879 /usr/sbin/mesos-master --zk=zk://10.145.6.64:2181/mesos --port=5050 --log_dir=/var/log/mesos --quorum=1 --work_dir=/var...
-           ├─27889 logger -p user.info -t mesos-master[27879]
-           └─27890 logger -p user.err -t mesos-master[27879]
+           ├─28630 /usr/sbin/mesos-master --zk=zk://10.145.6.64:2181/mesos --port=5050 --log_dir=/var/log/mesos --ip=10.145.6.64 --quorum=...
+           ├─28642 logger -p user.info -t mesos-master[28630]
+           └─28643 logger -p user.err -t mesos-master[28630]
 
-May 30 19:12:56 d1p3920tlm-prxs-iam-a.vchslabs.vmware.com mesos-master[27890]: I0530 19:12:56.745931 27897 master.cpp:1948] Disconnect...0467
-May 30 19:12:56 d1p3920tlm-prxs-iam-a.vchslabs.vmware.com mesos-master[27890]: I0530 19:12:56.748011 27897 master.cpp:1964] Deactivati...0467
-May 30 19:12:56 d1p3920tlm-prxs-iam-a.vchslabs.vmware.com mesos-master[27890]: I0530 19:12:56.748690 27897 master.cpp:900] Giving fram...over
+May 30 23:52:21 d1p3920tlm-prxs-iam-a.vchslabs.vmware.com mesos-master[28643]: I0530 23:52:21.545409 28651 http.cpp:516] HTTP request ...son'
+May 30 23:52:32 d1p3920tlm-prxs-iam-a.vchslabs.vmware.com mesos-master[28643]: I0530 23:52:32.539134 28651 http.cpp:516] HTTP request ...son'
+```
+Marathon
+```
 $ systemctl restart marathon.service
+$ ps -aux | grep marathon
+root     28001  1.8  9.8 3320324 381580 ?      Ssl  19:12   5:10 java -Djava.library.path=/usr/local/lib:/usr/lib:/usr/lib64 -Djava.util.logging.SimpleFormatter.format=%2$s%5$s%6$s%n -Xmx512m -cp /usr/bin/marathon mesosphere.marathon.Main --zk zk://10.145.6.64:2181/marathon --master zk://10.145.6.64:2181/mesos
 $ systemctl status marathon.service
 marathon.service - Marathon
    Loaded: loaded (/usr/lib/systemd/system/marathon.service; enabled)
