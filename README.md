@@ -144,6 +144,11 @@ $ systemctl stop mesos-master.service
 $ systemctl disable mesos-master.service
 rm '/etc/systemd/system/multi-user.target.wants/mesos-master.service'
 ```
+### Set command line options for mesos-slave
+You can create files under /etc/mesos-slave
+```
+echo MESOS_SLAVE_IP > /etc/mesos-slave/ip
+```
 ### Restart Mesos Slave
 ```
 $ systemctl restart mesos-slave.service
@@ -211,4 +216,12 @@ Scheduler driver bound to loopback interface! Cannot communicate with remote mas
 Solution: set LIBPROCESS_IP as an env variable
 ```
 $ export LIBPROCESS_IP=10.145.6.68
+```
+## Issues coming from previous mesos runs
+Clear the cache saved from prior run
+```
+$ systemctl stop mesos-slave.service
+$ rm -f /tmp/mesos/meta/slaves/latest
+$ systemctl start mesos-slave.service
+$ systemctl status mesos-slave.service
 ```
