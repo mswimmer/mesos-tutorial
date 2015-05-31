@@ -4,14 +4,19 @@ Introduction of Mesos
 # Prelude
 
 # Create 2 CentOS7 VMs 
+
 ## Cloning VM from CentOS 7 Vagrant template
+I had to use a set of IP already in DNS... To understand
+* Mesos Master node: 10.145.6.64 / d1p3920tlm-prxs-iam-a.vchslabs.vmware.com
+* Mesos Slave node: 10.145.6.68 / d1p3920tlm-prxs-iam-b.vchslabs.vmware.com OR d1p300oss-presto-vip.vchslabs.vmware.com
+
 ## Set up network configuration
 Check out [this gist](https://gist.github.com/craimbert/1fb6c4dd296c84f3a253)
 
 # Turning the 2 blank VMs into a Mesos Master & Mesos Slave
 Check out the [official Mesos tutorial](https://docs.mesosphere.com/getting-started/datacenter/install/) and follow the "RedHat 7 / CentOS 7" instructions
 
-## 1rst VM -> Mesos Master Node
+# Install 1rst VM -> Mesos Master Node
 ### Install packages
 Add yum repo
 ```
@@ -116,7 +121,7 @@ May 30 19:13:00 d1p3920tlm-prxs-iam-a.vchslabs.vmware.com marathon[28014]: [2015
 
 
 
-## 2nd VM -> Mesos Slave Node
+# Install 2nd VM -> Mesos Slave node
 
 ### Install packages
 Add yum repo
@@ -241,7 +246,8 @@ Received status update TASK_FINISHED for task cluster-test
 I0531 00:13:37.053741 29657 sched.cpp:1589] Asked to stop the driver
 I0531 00:13:37.053812 29657 sched.cpp:831] Stopping framework '20150530-234633-1074172170-5050-28630-0000'
 ```
-
+## Result in the Master Slave console
+Under Slaves / Completed Frameworks, the list Completed Executors presents the list of executed task
 # Recurrent Problems
 ## LIBPROCESS_IP not defined for the Mesos Slave node
 Problem
