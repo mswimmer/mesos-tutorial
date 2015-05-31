@@ -113,19 +113,22 @@ $ yum -y install mesos telnet
 ```
 ## Test network connection with Mesos Master node
 Ping the VM at its IP address
+```
 $ ping 10.145.6.64
 PING 10.145.6.64 (10.145.6.64) 56(84) bytes of data.
 64 bytes from 10.145.6.64: icmp_seq=1 ttl=64 time=0.979 ms
 64 bytes from 10.145.6.64: icmp_seq=2 ttl=64 time=0.456 ms
 ....
+```
 Test if the port 2181, used by ZooKeeper on the Mesos Master node, is open
+```
 $ telnet 10.145.6.64 2181 
 Trying 10.145.6.64...
 Connected to 10.145.6.64.
 Escape character is '^]'.
 ;
 Connection closed by foreign host.
-
+```
 ### Extra config for Mesos
 
 ZooKeeper list of Master's IP
@@ -156,6 +159,7 @@ May 30 19:41:47 localhost.localdomain mesos-slave[2791]: I0530 19:41:47.750701  
 May
 ```
 # Test connection Mesos Slave -> Mesos Master
+```
 $ mesos-resolve `cat /etc/mesos/zk`
 2015-05-30 19:43:37,365:2819(0x7f1fb4822700):ZOO_INFO@log_env@712: Client environment:zookeeper.version=zookeeper C client 3.4.5
 2015-05-30 19:43:37,365:2819(0x7f1fb4822700):ZOO_INFO@log_env@716: Client environment:host.name=localhost.localdomain
@@ -176,3 +180,4 @@ I0530 19:43:37.374236  2821 detector.cpp:138] Detected a new leader: (id='2')
 I0530 19:43:37.374328  2821 group.cpp:659] Trying to get '/mesos/info_0000000002' in ZooKeeper
 I0530 19:43:37.374979  2821 detector.cpp:452] A new leading master (UPID=master@10.145.6.64:5050) is detected
 10.145.6.64:5050
+```
