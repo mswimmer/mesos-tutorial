@@ -156,7 +156,6 @@ mesos-slave.service - Mesos Slave
 
 May 30 19:41:47 localhost.localdomain mesos-slave[2791]: I0530 19:41:47.750658  2792 group.cpp:313] Group process (group(1)@127.0.0....Keeper
 May 30 19:41:47 localhost.localdomain mesos-slave[2791]: I0530 19:41:47.750701  2792 group.cpp:790] Syncing group operations: queue ... 0, 0)
-May
 ```
 # Test connection Mesos Slave -> Mesos Master
 ```
