@@ -217,6 +217,31 @@ On Slave VM
 $ ps -aux | grep mesos-slave
 root      2784  0.0  0.3 952064 14664 ?        Ssl  19:41   0:01 /usr/sbin/mesos-slave --master=zk://10.145.6.64:2181/mesos --log_dir=/var/log/mesos
 ```
+
+## Launch task from Mesos Slave node
+Best way to test: launch a task through mesos-execute from mesos-slave node
+### Set the MASTER
+```
+$ export MASTER=$(mesos-resolve `cat /etc/mesos/zk`)
+$ echo $MASTER
+10.145.6.64:5050
+```
+### Launch the task
+```
+$ mesos-execute --master=$MASTER --name="cluster-test" --command="sleep 5"
+
+I0531 00:13:31.915200 29653 sched.cpp:157] Version: 0.22.1
+I0531 00:13:31.919256 29657 sched.cpp:254] New master detected at master@10.145.6.64:5050
+I0531 00:13:31.919436 29657 sched.cpp:264] No credentials provided. Attempting to register without authentication
+I0531 00:13:31.921775 29657 sched.cpp:448] Framework registered with 20150530-234633-1074172170-5050-28630-0000
+Framework registered with 20150530-234633-1074172170-5050-28630-0000
+task cluster-test submitted to slave 20150530-234633-1074172170-5050-28630-S0
+Received status update TASK_RUNNING for task cluster-test
+Received status update TASK_FINISHED for task cluster-test
+I0531 00:13:37.053741 29657 sched.cpp:1589] Asked to stop the driver
+I0531 00:13:37.053812 29657 sched.cpp:831] Stopping framework '20150530-234633-1074172170-5050-28630-0000'
+```
+
 # Recurrent Problems
 ## LIBPROCESS_IP not defined for the Mesos Slave node
 Problem
