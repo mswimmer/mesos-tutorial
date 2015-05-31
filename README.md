@@ -166,6 +166,7 @@ rm '/etc/systemd/system/multi-user.target.wants/mesos-master.service'
 You can create files under /etc/mesos-slave
 ```
 echo MESOS_SLAVE_IP > /etc/mesos-slave/ip
+echo MESOS_SLAVE_HOSTNAME > /etc/mesos-slave/hostname
 ```
 ### Restart Mesos Slave
 ```
