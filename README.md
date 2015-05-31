@@ -180,3 +180,8 @@ I0530 19:43:37.374328  2821 group.cpp:659] Trying to get '/mesos/info_0000000002
 I0530 19:43:37.374979  2821 detector.cpp:452] A new leading master (UPID=master@10.145.6.64:5050) is detected
 10.145.6.64:5050
 ```
+
+# Test
+## Mesos Master console - port 5050
+
+## Mesos Master Marathon console - port 8080
