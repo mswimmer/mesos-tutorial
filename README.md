@@ -4,6 +4,9 @@ Introduction of Mesos
 # Prelude
 
 # Create 2 CentOS7 VMs 
+## Cloning VM from CentOS 7 Vagrant template
+## Set up network configuration
+Check out [this gist](https://gist.github.com/craimbert/1fb6c4dd296c84f3a253)
 
 # Turning the 2 blank VMs into a Mesos Master & Mesos Slave
 Check out the [official Mesos tutorial](https://docs.mesosphere.com/getting-started/datacenter/install/) and follow the "RedHat 7 / CentOS 7" instructions
@@ -185,3 +188,27 @@ I0530 19:43:37.374979  2821 detector.cpp:452] A new leading master (UPID=master@
 ## Mesos Master console - port 5050
 
 ## Mesos Master Marathon console - port 8080
+## Mesos Master & Slave
+On Master VM
+```
+$ ps -aux | grep mesos-master
+root     27879  0.1  0.5 1274612 22592 ?       Ssl  19:12   0:15 /usr/sbin/mesos-master --zk=zk://10.145.6.64:2181/mesos --port=5050 --log_dir=/var/log/mesos --quorum=1 --work_dir=/var/lib/mesos
+```
+On Slave VM
+```
+$ ps -aux | grep mesos-slave
+root      2784  0.0  0.3 952064 14664 ?        Ssl  19:41   0:01 /usr/sbin/mesos-slave --master=zk://10.145.6.64:2181/mesos --log_dir=/var/log/mesos
+```
+# Recurrent Problems
+## LIBPROCESS_IP not defined for the Mesos Slave node
+Problem
+```
+$ mesos-execute --master=$MASTER --name="cluster-test" --command="sleep 5"
+**************************************************
+Scheduler driver bound to loopback interface! Cannot communicate with remote master(s). You might want to set 'LIBPROCESS_IP' environment variable to use a routable IP address.
+**************************************************
+```
+Solution: set LIBPROCESS_IP as an env variable
+```
+$ export LIBPROCESS_IP=10.145.6.68
+```
