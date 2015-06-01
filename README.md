@@ -302,8 +302,10 @@ I0531 19:15:55.405704 32496 sched.cpp:1589] Asked to stop the driver
 I0531 19:15:55.405743 32496 sched.cpp:831] Stopping framework '20150531-183234-1074172170-5050-2395-0003'
 ```
 ### Result in the Master Slave console
-Under Slaves / Completed Frameworks, the list Completed Executors presents the list of executed task
-
+Under Slaves / Completed Frameworks, the list Completed Executors
+![executed list](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/5-mesos_master_console_completed_executor_list.png)
+Executor details showing tasks
+![tasks](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/6-mesos_master_console_list_tasks.png)
 
 # Recurrent Problems
 ## LIBPROCESS_IP not defined for the Mesos Slave node
