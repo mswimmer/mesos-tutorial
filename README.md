@@ -247,7 +247,7 @@ The 1rst node appears in the list of registered nodes on the master<br />
 ![mesos slave1](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/3-mesos_master_console_list_slave.png)
 
 Here is the summary of the 1rst Mesos Slave node<br />
-![mesos slave2](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/4-mesos_master_console_slave_summary.png)
+![mesos slave2](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/4-mesos_master_console_slave_summary_fix.png)
 
 
 # Tests the Cluster
