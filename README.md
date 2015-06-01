@@ -314,3 +314,17 @@ $ rm -f /tmp/mesos/meta/slaves/latest
 $ systemctl start mesos-slave.service
 $ systemctl status mesos-slave.service
 ```
+## iptables
+The iptables on a CentOS 7 VM should look like this
+```
+$ iptables -L
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination
+
+Chain FORWARD (policy ACCEPT)
+target     prot opt source               destination
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination
+```
