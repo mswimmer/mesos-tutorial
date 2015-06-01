@@ -3,6 +3,10 @@ Introduction of Mesos
 
 # Prelude
 
+# Table of Contents
+
+* [Create 2 CentOS7 VMs](#create_2_centos7_vms)
+
 # Create 2 CentOS7 VMs 
 
 ## Cloning VM from CentOS 7 Vagrant template
