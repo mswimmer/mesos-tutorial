@@ -149,7 +149,12 @@ marathon.service - Marathon
 May 31 18:58:53 d1p3920-charles-mesos-master.vchslabs.vmware.com marathon[1199]: [2015-05-31 18:58:53,360] INFO 10.113.229.247 -  -  [01/Jun/2015:01:58:53 +0000] "GET /v2/apps//hello-marat...
 ```
 
-
+## Test the Mesos Master node
+### Mesos Master console - port 5050
+There is no Mesos Slave node registered so far...
+![mesos master console](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/0-mesos_master_console_5050.png)
+### Mesos Master Marathon console - port 8080
+![mesos master marathon console](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/1-marathon_console_8080.png)
 
 
 # Install 2nd VM -> Mesos Slave node
@@ -234,12 +239,16 @@ mesos-slave.service - Mesos Slave
 
 May 31 19:02:07 localhost.localdomain mesos-slave[32384]: I0531 19:02:07.241608 32385 slave.cpp:3648] Current disk usage 6.79%. Max allowed age: 5.824677064796389days
 ```
+## Test the Mesos Slave node
+A slave node is registered into the Mesos Master
+![mesos slave 0](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/2-mesos_master_console_new_slave.png)
+The 1rst node appears in the list of registered nodes on the master
+![mesos slave 1](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/3-mesos_master_console_list_slave.png)
+Here is the summary of the 1rst Mesos Slave node
+![mesos slave 2](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/4-mesos_master_console_slave_summary.png)
+
 # Tests the Cluster
 
-## Mesos Master console - port 5050
-![mesos master console](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/0-mesos_master_console_5050.png)
-## Mesos Master Marathon console - port 8080
-![mesos master marathon console](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/1-marathon_console_8080.png)
 ## Connection Mesos Slave -> Mesos Master
 ```
 $ mesos-resolve `cat /etc/mesos/zk`
