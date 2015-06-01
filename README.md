@@ -240,15 +240,15 @@ mesos-slave.service - Mesos Slave
 May 31 19:02:07 localhost.localdomain mesos-slave[32384]: I0531 19:02:07.241608 32385 slave.cpp:3648] Current disk usage 6.79%. Max allowed age: 5.824677064796389days
 ```
 ## Test the Mesos Slave node
-A slave node is registered into the Mesos Master
-![mesos slave 0](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/2-mesos_master_console_new_slave.png)
-<br />
-The 1rst node appears in the list of registered nodes on the master
-![mesos slave 1](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/3-mesos_master_console_list_slave.png)
-<br />
-Here is the summary of the 1rst Mesos Slave node
-![mesos slave 2](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/4-mesos_master_console_slave_summary.png)
-<br />
+A slave node is registered into the Mesos Master<br />
+![mesos slave0](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/2-mesos_master_console_new_slave.png)
+
+The 1rst node appears in the list of registered nodes on the master<br />
+![mesos slave1](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/3-mesos_master_console_list_slave.png)
+
+Here is the summary of the 1rst Mesos Slave node<br />
+![mesos slave2](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/4-mesos_master_console_slave_summary.png)
+
 
 # Tests the Cluster
 
