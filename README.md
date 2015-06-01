@@ -4,6 +4,10 @@ Introduction to Mesos
 # Prelude
 This tutorial is meant to explain how to create a remote CentOS7 Mesos Master node & a remote CentOS7 Mesos Slave node, including how to configure and test the services (Mesos, ZooKeeper, Marathon), and test the cluster.
 
+## Table of Contents
+
+* [Install Mesos Master Node](#install-mesos-master-node)
+
 # Create 2 CentOS7 VMs 
 
 ## Cloning VM from CentOS 7 Vagrant template
@@ -17,7 +21,7 @@ Check out [this gist](https://gist.github.com/craimbert/1fb6c4dd296c84f3a253)
 # Turning the 2 blank VMs into a Mesos Master & Mesos Slave
 Check out the [official Mesos tutorial](https://docs.mesosphere.com/getting-started/datacenter/install/) and follow the "RedHat 7 / CentOS 7" instructions
 
-# Install 1rst VM -> Mesos Master Node
+# Install Mesos Master Node
 ## Install packages
 Add yum repo
 ```
