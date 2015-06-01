@@ -2,7 +2,7 @@
 Introduction of Mesos
 
 # Prelude
-
+This tutorial is meant to explain how to create a remote CentOS7 Mesos Master node & a remote CentOS7 Mesos Slave node, including how to configure and test the services (Mesos, ZooKeeper, Marathon), and test the cluster.
 
 # Create 2 CentOS7 VMs 
 
