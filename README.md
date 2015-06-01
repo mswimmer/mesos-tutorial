@@ -237,9 +237,9 @@ May 31 19:02:07 localhost.localdomain mesos-slave[32384]: I0531 19:02:07.241608 
 # Tests the Cluster
 
 ## Mesos Master console - port 5050
-
+![mesos master console](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/0-mesos_master_console_5050.png)
 ## Mesos Master Marathon console - port 8080
-
+![mesos master marathon console](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/1-marathon_console_8080.png)
 ## Connection Mesos Slave -> Mesos Master
 ```
 $ mesos-resolve `cat /etc/mesos/zk`
