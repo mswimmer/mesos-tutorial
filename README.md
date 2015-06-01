@@ -18,6 +18,8 @@ I used:
 * Mesos Master node: 10.145.6.64 / d1p3920-charles-mesos-master.vchslabs.vmware.com
 * Mesos Slave  node: 10.145.6.68 / d1p3920-charles-mesos-slave.vchslabs.vmware.com
 
+To create the 2 VMs, I cloned an internal CentOS7 Vagrant template already uploaded on the vCenter
+
 ## Set up network configuration
 Check out [this gist](https://gist.github.com/craimbert/1fb6c4dd296c84f3a253)
 
