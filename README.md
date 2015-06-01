@@ -3,10 +3,6 @@ Introduction of Mesos
 
 # Prelude
 
-# Table of Contents
-
-* [Create 2 CentOS7 VMs](#create_2_centos7_vms)
-* [Tests the Cluster](#tests_the_cluster)
 
 # Create 2 CentOS7 VMs 
 
