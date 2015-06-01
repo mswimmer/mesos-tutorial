@@ -7,6 +7,9 @@ This tutorial is meant to explain how to create a remote CentOS7 Mesos Master no
 ## Table of Contents
 
 * [Install Mesos Master Node](#install-mesos-master-node)
+* [Install Mesos Slave Node](#install-mesos-slave-node)
+* [Test the Cluster](#test-the-cluster)
+* [Recurrent Problems](#recurrent-problems)
 
 # Create 2 CentOS7 VMs 
 
@@ -161,7 +164,7 @@ There is no Mesos Slave node registered so far...
 ![mesos master marathon console](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/1-marathon_console_8080.png)
 
 
-# Install 2nd VM -> Mesos Slave node
+# Install Mesos Slave node
 
 ## Install packages
 Add yum repo
@@ -254,7 +257,7 @@ Here is the summary of the 1rst Mesos Slave node<br />
 ![mesos slave2](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/4-mesos_master_console_slave_summary_fix.png)
 
 
-# Tests the Cluster
+# Test the Cluster
 
 ## Connection Mesos Slave -> Mesos Master
 ```
