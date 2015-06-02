@@ -316,6 +316,10 @@ Under Slaves / Completed Frameworks, the list Completed Executors
 Executor details showing tasks
 ![tasks](https://github.com/craimbert/mesos-tutorial/blob/master/screenshots/6-mesos_master_console_list_tasks.png)
 
+### Check Mesos service logs
+```
+$ journalctl -u mesos-slave.service
+```
 # Recurrent Problems
 ## LIBPROCESS_IP not defined for the Mesos Slave node
 Problem
