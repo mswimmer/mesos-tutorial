@@ -74,15 +74,15 @@ May 31 18:32:51 d1p3920-charles-mesos-master.vchslabs.vmware.com zookeeper[1138]
 ```
 Make sure ZooKeeper service listens on the port 2181
 ```
-$ netstat -anp | grep 2181
-tcp6       0      0 :::2181                 :::*                    LISTEN      27778/java
+$ ss -ln |grep 2181
+tcp    LISTEN     0      50                    :::2181                 :::*
 ```
 ## Mesos
 ### Extra config for Mesos
 Mesos Master IP
 ```
-$ ifconfig eth0 | grep 'inet '
-inet 10.145.6.64  netmask 255.255.255.0  broadcast 10.145.6.255
+$ ip addr show eth0 | grep 'inet '
+inet 10.145.6.64  brd 10.145.6.255 ...
 
 $ echo "10.145.6.64" > /etc/mesos-master/ip
 ```
@@ -110,21 +110,21 @@ Quorum
 ```
 ### Disable mesos-slave service
 ```
-$ systemctl stop mesos-slave.service
-$ systemctl disable mesos-slave.service
+$ systemctl stop mesos-slave
+$ systemctl disable mesos-slave
 rm '/etc/systemd/system/multi-user.target.wants/mesos-slave.service'
 ```
 ### Start Mesos Master 
 Restart the Mesos Master service
 ```
-$ systemctl restart  mesos-master.service
+$ systemctl restart  mesos-master
 ```
 Test Mesos Master service
 ```
 $ ps -aux | grep mesos-master
 root  2395  /usr/sbin/mesos-master --zk=zk://10.145.6.64:2181/mesos --port=5050 --log_dir=/var/log/mesos --cluster=charles-cluster --hostname=d1p3920-charles-mesos-master.vchslabs.vmware.com. --ip=10.145.6.64 --quorum=1 --work_dir=/var/lib/mesos
 
-$ systemctl status mesos-master.service
+$ systemctl status mesos-master
    Loaded: loaded (/usr/lib/systemd/system/mesos-master.service; enabled)
    Active: active (running) since Sun 2015-05-31 18:32:34 PDT; 24min ago
  Main PID: 2395 (mesos-master)
@@ -145,7 +145,7 @@ $ systemctl restart marathon.service
 $ ps -aux | grep marathon
 root  java -Djava.library.path=/usr/local/lib:/usr/lib:/usr/lib64 -Djava.util.logging.SimpleFormatter.format=%2$s%5$s%6$s%n -Xmx512m -cp /usr/bin/marathon mesosphere.marathon.Main --zk zk://10.145.6.64:2181/marathon --master zk://10.145.6.64:2181/mesos
 
-$ systemctl status marathon.service
+$ systemctl status marathon
 marathon.service - Marathon
    Loaded: loaded (/usr/lib/systemd/system/marathon.service; enabled)
    Active: active (running) since Sun 2015-05-31 18:26:57 PDT; 32min ago
@@ -199,8 +199,8 @@ Connection closed by foreign host.
 ### Extra config for Mesos
 Mesos Slave IP
 ```
-$ ifconfig eth0 | grep 'inet '
-inet 10.145.6.68  netmask 255.255.255.0  broadcast 10.145.6.255
+$ ip addr show eth0 | grep 'inet '
+inet 10.145.6.68  brd 10.145.6.255 ...
 
 $ echo "10.145.6.68" > /etc/mesos-slave/ip
 ```
@@ -221,14 +221,14 @@ echo "zk://MESOS_MASTER_IP:2181/mesos" > /etc/mesos/zk
 
 ### Disable mesos-master service
 ```
-$ systemctl stop mesos-master.service
-$ systemctl disable mesos-master.service
+$ systemctl stop mesos-master
+$ systemctl disable mesos-master
 rm '/etc/systemd/system/multi-user.target.wants/mesos-master.service'
 ```
 ### Start Mesos Slave service
 Start Mesos Slave service
 ```
-$ systemctl restart mesos-slave.service
+$ systemctl restart mesos-slave
 ```
 Test Mesos Master service
 ```
@@ -318,7 +318,7 @@ Executor details showing tasks
 
 ### Check Mesos service logs
 ```
-$ journalctl -u mesos-slave.service
+$ journalctl -u mesos-slave
 ```
 # Recurrent Problems
 ## LIBPROCESS_IP not defined for the Mesos Slave node
@@ -336,10 +336,10 @@ $ export LIBPROCESS_IP=10.145.6.68
 ## Issues coming from previous mesos runs
 Clear the cache saved from prior run
 ```
-$ systemctl stop mesos-slave.service
+$ systemctl stop mesos-slave
 $ rm -f /tmp/mesos/meta/slaves/latest
-$ systemctl start mesos-slave.service
-$ systemctl status mesos-slave.service
+$ systemctl start mesos-slave
+$ systemctl status mesos-slave
 ```
 ## iptables
 The iptables on a CentOS 7 VM should look like this
